@@ -8,3 +8,17 @@ The script checks for self giving, but no other validation (spouses, siblings, e
 Have fun!
 
 -Aggraxis
+
+Usage:
+ - Install Python 3: https://www.python.org/
+ - Clone this repository or just download GiftShuffler.py and participants.csv into the same folder
+ - Edit participants.csv with your desired list of names. 
+   - Most PCs will probably try to open the file with Excel, which is fine so long as you save the file as a Comma Separated Values (CSV) file instead of an Excel spreadsheet. Editing it in something like Notepad or Notepad++ works too. Keep in mind that the column header still needs to say NAME because the code looks for it.
+ - Open up a terminal, command prompt, Powershell window, or whatever and navigate to where you stored the files. 
+   - Putting them somewhere simple like c:\shuffler\ might help.
+ - execute the script: python GiftShuffler.py
+   - It won't return any output to the terminal, but you should see a series of 'send_to_(person).txt' files in your shuffler folder now.
+ - Don't open the text files! Send them to the person indicated in the file name.
+   - For example, the file for me might be named 'send_to_paul.txt', and the contents would read something like 'Paul gives to Ben'
+ - Commence gifting mayhem.
+ 
