@@ -10,8 +10,7 @@ if __name__ == "__main__":
         reader = csv.DictReader(csvfile)
         giverDicts = list(reader)
 
-    for gDict in giverDicts:
-        giverList.append(gDict['NAME'])  
+    giverList = [gDict['NAME'] for gDict in giverDicts]
 
     recipientList = giverList.copy()
 
