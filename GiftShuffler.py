@@ -1,24 +1,29 @@
-#import os
 import random
 import csv
 
 if __name__ == "__main__":
     fileName="participants.csv"
-    participantList = []
+    giverList = []
+    givingDict = {}
+    
     with open (fileName) as csvfile:
         reader = csv.DictReader(csvfile)
-        participantList = list(reader)
-    recipientList = participantList.copy()
-    givingDict = {}
-    for participant in participantList:
-        #this is most likely not pythonic.
+        giverDicts = list(reader)
+
+    for gDict in giverDicts:
+        giverList.append(gDict['NAME'])  
+
+    recipientList = giverList.copy()
+
+    for giver in giverList:
         found = False
         while not(found):
-            potentialRecipient = random.choice(recipientList)
-            if participant['NAME'] != potentialRecipient['NAME']:
-                givingDict[participant['NAME']] = potentialRecipient['NAME']
-                recipientList.remove(potentialRecipient)
+            recipient = random.choice(recipientList)
+            if giver != recipient:
+                givingDict[giver] = recipient
+                recipientList.remove(recipient)
                 found = True
+            
     for key in givingDict:
         outFileName="send_to_" + key + ".txt"
         text_file = open(outFileName, "wt")
