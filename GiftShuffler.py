@@ -5,20 +5,25 @@ if __name__ == "__main__":
     fileName="participants.csv"
     giverList = []
     givingDict = {}
+    exclusionDict = {}
     
     with open (fileName) as csvfile:
         reader = csv.DictReader(csvfile)
         giverDicts = list(reader)
+    with open (fileName) as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            exclusionDict[row['NAME']] = row['PARTNER']
+            exclusionDict[row['PARTNER']] = row['NAME']
 
     giverList = [gDict['NAME'] for gDict in giverDicts]
-
     recipientList = giverList.copy()
 
     for giver in giverList:
         found = False
         while not(found):
             recipient = random.choice(recipientList)
-            if giver != recipient:
+            if giver != recipient and recipient != exclusionDict[giver]:
                 givingDict[giver] = recipient
                 recipientList.remove(recipient)
                 found = True
